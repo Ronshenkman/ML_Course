@@ -1,0 +1,42 @@
+---
+title: "First"
+output: html_document
+date: "2025-05-04"
+---
+
+```{r}
+library(dplyr)
+library(knitr)
+library(kableExtra)
+library(ggplot2)
+
+```
+```{r}
+data(iris)
+#calculation of the average sepal lenth per specie and displaying it in a table
+iris %>% 
+  select(starts_with("Sepal"), Species) %>% 
+  group_by(Species) %>% 
+  summarise(Average_Sepal_Length = mean(Sepal.Length)) %>% 
+  kable(format = "html", caption = "Average Sepal Length by Species") %>% 
+  kable_styling(full_width = FALSE)
+```
+
+```{r}
+data(mtcars)
+# Naming each cylinder number 
+mtcars$cyl <- factor(mtcars$cyl,
+                     labels = c("4 cylinders","6 cylinders","8 cylinders"))
+
+ggplot(mtcars, aes(x = hp, y = mpg, color = cyl)) +
+  geom_point(size = 2) +
+  geom_smooth(method = "lm", se = FALSE, aes(color = cyl)) +
+  labs(
+    x     = "Horsepower (hp)",
+    y     = "Miles per Gallon (mpg)",
+    color = "Cylinders",
+    title = "mpg vs hp with per-cylinder trend lines"
+  ) +
+  theme_minimal()
+```
+
