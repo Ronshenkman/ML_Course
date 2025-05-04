@@ -40,3 +40,9 @@ ggplot(mtcars, aes(x = hp, y = mpg, color = cyl)) +
   theme_minimal()
 ```
 
+```{r}
+#install.packages("usethis")
+library(usethis)
+print("Modification for git")
+```
+
