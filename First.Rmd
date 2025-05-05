@@ -45,5 +45,6 @@ ggplot(mtcars, aes(x = hp, y = mpg, color = cyl)) +
 library(usethis)
 print("Modification for git")
 #The git code was done in the terminal
+# git link: https://github.com/Ronshenkman/ML_Course.git
 ```
 
